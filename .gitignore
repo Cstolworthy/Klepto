@@ -1,0 +1,6 @@
+# Unreal / editor output that should never ship or be committed
+Klepto7M211/Saved/
+Klepto7M211/Intermediate/
+Klepto7M211/DerivedDataCache/
+Klepto7M211/Binaries/
+*.tmp

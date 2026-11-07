@@ -1,0 +1,12 @@
+{
+  "name": "Klepto",
+  "game": "Abiotic Factor",
+  "modioGameId": 13105,
+  "modioModId": 6508756,
+  "modRowPrefix": "OBXNA",
+  "projectFolder": "Klepto7M211",
+  "visibility": "private",
+  "uploads": [
+    { "version": "1.0", "date": "2026-11-07", "changelog": "Initial release" }
+  ]
+}
