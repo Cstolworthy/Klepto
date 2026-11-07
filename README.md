@@ -1,5 +1,7 @@
 # Klepto
 
+A spiritual successor to [kleptomania](https://www.nexusmods.com/abioticfactor/mods/214) by Terastardig (Nexus, UE4SS), rebuilt for the official mod.io mod support. Klepto covers every object kleptomania did, plus a few more.
+
 An Abiotic Factor mod that adds the **Kleptomaniac** trait. A character with the trait can pack up fixed furniture and appliances that the game normally bolts down: stoves, kitchen cupboards and counters, lockers, sinks, toilets, vending, coffee and slushie machines, water tanks, bunk mattresses and shelves. Items packed this way never break.
 
 > If it isn't nailed down, it's yours. If it is nailed down... it's still yours.
@@ -54,10 +56,13 @@ Friends who join a world with Klepto enabled are prompted to download it. Only o
 | Unbreakable locker bench | Furniture_Bench_Unbreakable | Bench_Locker (base game) |
 | Breakroom table | Furniture_VOTV_CafeteriaTable | Deployable_Table_Cafeteria (base game) |
 | Mattress | Deployed_VOTV_Mattress | votv_Mattress (base game) |
+| Signal workbench | Deployed_CraftingBench_SIGNAL | klepto_craftbench_signal |
+| Salem salvage anvil | Salem_SalvageAnvil | klepto_salvage_anvil |
+| GATE charging station | GATE_ChargingStation | klepto_gate_chargingstation |
 
 ### Deliberately left fixed
 
-Ladders, tram seats and tram storage, wall turrets, jump pads, punch-card terminals, trader boxes and dispensers, force fields, locked/hackable crates, robot charging stations, and the water-volume actors. Moving these can strand a player or break areas and quests.
+Ladders, tram seats and tram storage, wall turrets, jump pads, punch-card terminals, trader boxes and dispensers, force fields, locked/hackable crates, robot charging modules, and the water-volume actors. Moving these can strand a player or break areas and quests.
 
 ## Known limits
 
