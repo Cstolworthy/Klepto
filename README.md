@@ -29,8 +29,9 @@ Friends who join a world with Klepto enabled are prompted to download it. Only o
 ## How it works
 
 - `Trait_Kleptomaniac` (DT_Traits) grants `Buff_Trait_Kleptomaniac` (DT_BuffsDebuffs).
-- The buff's logic object, `Blueprints/BuffObject_Kleptomaniac`, runs on the server when the buff is applied and on every buff tick (once per second).
-- Each run finds all `AbioticDeployed_Furniture_ParentBP` actors. For each one whose class is in its lookup list, it sets `CanBePackaged = true`, `DefaultBreakChanceOnPackage = 0` and `DeconstructedItemData` to the matching item row.
+- The buff's logic object, `Blueprints/BuffObject_Kleptomaniac`, runs on the server when the buff is applied and on every buff tick (once per second), plus a 2-second sweep timer.
+- Each server sweep finds all `AbioticDeployed_Furniture_ParentBP` actors. For each one whose class is in its lookup list, it sets `CanBePackaged = true`, `DefaultBreakChanceOnPackage = 0` and `DeconstructedItemData` to the matching item row. It also repairs durability (`ChangeableData` and `CurrentDurability`/`MaxDurability` set to 150 when 0) and finishes the build of player-placed items.
+- `CanBePackaged` and `DeconstructedItemData` are not replicated, but the hold-F package prompt is checked on each player's own PC. So the trait object also keeps a hidden, never-expiring buff, `Buff_KleptoSweep` (DT_BuffsDebuffs), on the character via `Server_ApplyBuff` (it reaches the buff component as its outer, since traits have no linked character). That buff's logic actor, `Blueprints/BuffActor_Kleptomaniac`, replicates and runs the same packable sweep on every machine every 2 seconds (`Broadcast_OnBuffBeginPlay`). Traits only create logic objects, never logic actors, which is why the separate buff is needed.
 - Fixed items that have no inventory item in the base game get a new deployable item row under `DataTables/ItemTable_Deployables/klepto_*`. These rows reuse the game's meshes and the closest existing icons.
 - In the game, mod row names carry the prefix `OBXNA_` (for example `OBXNA_klepto_stove_industrial`). The lookup list in the Blueprint uses these full names.
 
@@ -70,7 +71,13 @@ Ladders, tram seats and tram storage, wall turrets, jump pads, punch-card termin
 - Items unlocked during a session stay unlocked until their area reloads, even if the trait goes away.
 - Moved sinks may still give unlimited water.
 - Disabling Klepto on a save removes its items, including any fixed items you've moved.
-- Multiplayer has only been tested solo.
+- Multiplayer has been tested in the editor as a client of a dedicated server (Play As Client), not yet on a real server.
+
+## Versions
+
+- 1.5.1: Packing works for every player in co-op and on dedicated servers (not just the host). Placed Klepto items get real durability instead of packing up on the first hit. Durability and build repairs apply to every Klepto item again, not only coffee machines.
+- 1.1-1.4: durability, auto-build, area loading, kleptomania parity, slushie fix, placement rules.
+- 1.0: Kleptomaniac trait.
 
 ## Layout
 
